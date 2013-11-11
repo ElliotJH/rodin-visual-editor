@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: ac.soton.eventb.emf.core.extension.persistence;singleton:=true
+Bundle-Version: 1.2.0.r15619
+Bundle-Activator: ac.soton.eventb.emf.core.extension.persistence.ExtensionPersistencePlugin
+Bundle-Vendor: %Bundle-Vendor
+Require-Bundle: org.eclipse.ui;bundle-version="[3.7.0,4.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)",
+ org.eventb.core;bundle-version="[2.3.0,3.0.0)",
+ org.eventb.emf.core;bundle-version="[2.2.3,3.0.0)",
+ org.eventb.emf.persistence;bundle-version="[2.4.2,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.transaction;bundle-version="[1.4.0,2.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: ac.soton.eventb.emf.core.extension.persistence

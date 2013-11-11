@@ -1,0 +1,23 @@
+rule CopyTypedParameter
+	transform s : Source!`TypedParameter`
+	to t : Target!`TypedParameter` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`type` := s.`type`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}

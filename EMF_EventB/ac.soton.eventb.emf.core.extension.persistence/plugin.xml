@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.rodinp.core.internalElementTypes">
+      <internalElementType
+            class="ac.soton.eventb.emf.core.extension.persistence.SerialisedExtension"
+            id="serialisedExtension"
+            name="%internalElementType.name">
+      </internalElementType>
+   </extension>
+   <extension
+         point="org.rodinp.core.attributeTypes">
+      <attributeType
+            id="serialised"
+            kind="string"
+            name="%attributeType.name">
+      </attributeType>
+      <attributeType
+            id="extensionId"
+            kind="string"
+            name="Extension ID">
+      </attributeType>
+      <attributeType
+            id="ePackageURI"
+            kind="string"
+            name="EPackage URI">
+      </attributeType>
+      <attributeType
+            id="eClassifier"
+            kind="string"
+            name="EClassifier">
+      </attributeType>
+   </extension>
+
+</plugin>

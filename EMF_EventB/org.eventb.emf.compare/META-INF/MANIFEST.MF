@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Event-B EMF Compare Utility
+Bundle-SymbolicName: org.eventb.emf.compare;singleton:=true
+Bundle-Version: 1.4.2.r15527
+Bundle-Activator: org.eventb.emf.compare.EventBEMFComparePlugin
+Bundle-Vendor: University of Southampton
+Require-Bundle: org.eclipse.ui;bundle-version="[3.7.0,4.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)",
+ org.eclipse.emf.compare;bundle-version="[1.2.1,2.0.0)",
+ org.eclipse.emf.compare.match;bundle-version="[1.2.1,2.0.0)",
+ org.eclipse.emf.compare.diff;bundle-version="[1.2.1,2.0.0)",
+ org.eventb.emf.core;bundle-version="[2.2.3,3.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

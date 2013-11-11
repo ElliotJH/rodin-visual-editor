@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="coreextension" nsURI="http://soton.ac.uk/models/eventb/coreextension/0613"
+    nsPrefix="coreextension">
+  <eClassifiers xsi:type="ecore:EClass" name="TypedParameter" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Parameter #//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventBLabeled" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" defaultValueLiteral=""
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventBRelationKind" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="surjective" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="injective" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functional" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventBDataElaboration" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elaborates" eType="ecore:EClass ../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamed"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataKind" eType="#//DataKind"
+        defaultValueLiteral="Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataKind">
+    <eLiterals name="SET" literal="Carrier set"/>
+    <eLiterals name="CONSTANT" value="1" literal="Constant"/>
+    <eLiterals name="VARIABLE" value="2" literal="Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventBEventGroup" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elaborates" upperBound="-1"
+        eType="ecore:EClass ../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Event"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extended" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//TypedParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guards" upperBound="-1"
+        eType="ecore:EClass ../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Guard"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="ecore:EClass ../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Action"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="witnesses" upperBound="-1"
+        eType="ecore:EClass ../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Witness"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventBCommentedLabeledEventGroupElement"
+      abstract="true" eSuperTypes="#//EventBCommentedLabeledElement #//EventBEventGroup"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EventBCommentedLabeledElement" abstract="true"
+      eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBCommentedElement #//EventBLabeled"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EventBNamedCommentedDataElaborationElement"
+      abstract="true" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamedCommentedElement #//EventBDataElaboration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EventBNamedCommentedRelationDataElaborationElement"
+      abstract="true" eSuperTypes="#//EventBNamedCommentedDataElaborationElement #//EventBRelationKind"/>
+</ecore:EPackage>

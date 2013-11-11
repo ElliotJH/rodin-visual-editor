@@ -1,0 +1,720 @@
+
+//operation String toUnicode() {
+	//var unicode = Native("java.lang.Integer").parseInt(self, 16);
+	//var chars = Native("java.lang.Character").toChars(unicode);
+	//return Native("java.util.Arrays").toString(chars).substring(1,2);
+//}
+
+
+rule CopyProject
+	transform s : Source!`Project`
+	to t : Target!`Project` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+ 
+	t.`components` ::= s.`components`;
+}
+rule CopyExtension
+	transform s : Source!`Extension`
+	to t : Target!`Extension` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`extensionId` := s.`extensionId`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyStringToAttributeMapEntry
+	transform s : Source!`StringToAttributeMapEntry`
+	to t : Target!`StringToAttributeMapEntry` {
+	
+ 
+	t.`key` := s.`key`;
+ 
+	t.`value` ::= s.`value`;
+}
+rule CopyAttribute
+	transform s : Source!`Attribute`
+	to t : Target!`Attribute` {
+	
+ 
+	t.`type` := s.`type`;
+ 
+	t.`value` := s.`value`;
+ 
+	t.`annotations` ::= s.`annotations`;
+}
+rule CopyStringToStringMapEntry
+	transform s : Source!`StringToStringMapEntry`
+	to t : Target!`StringToStringMapEntry` {
+	
+ 
+	t.`key` := s.`key`;
+ 
+	t.`value` := s.`value`;
+}
+rule CopyAnnotation
+	transform s : Source!`Annotation`
+	to t : Target!`Annotation` {
+	
+ 
+	t.`source` := s.`source`;
+ 
+	t.`eventBObject` ::= s.`eventBObject`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`details` ::= s.`details`;
+ 
+	t.`contents` ::= s.`contents`;
+ 
+	t.`references` ::= s.`references`;
+}
+rule CopyMachine
+	transform s : Source!`Machine`
+	to t : Target!`Machine` {
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`refinesNames` := s.`refinesNames`;
+ 
+	t.`seesNames` := s.`seesNames`;
+ 
+	t.`variant` ::= s.`variant`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 	
+	t.extensions = s.extensions.equivalent().select(s|s.isKindOf(Target!AbstractExtension));
+ 
+	t.`attributes` ::= s.`attributes`;
+ 
+	//t.`refines` = s.refines.equivalent().select(s|s.isKindOf(Target!Machine));
+	t.`refines` = s.refines;
+ 
+	//t.`sees` = s.sees.equivalent().select(s|s.isKindOf(Target!Context));
+ 	t.`sees` = s.sees;
+ 	
+	t.`variables` ::= s.`variables`;
+ 
+	t.`invariants` ::= s.`invariants`;
+ 
+	t.`events` ::= s.`events`;
+}
+
+rule CopyVariable
+
+	transform s : Source!`Variable`
+	to t : Target!`Variable` {
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyInvariant
+	transform s : Source!`Invariant`
+	to t : Target!`Invariant` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`predicate` := s.`predicate`;
+ 
+	t.`theorem` := s.`theorem`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyVariant
+	transform s : Source!`Variant`
+	to t : Target!`Variant` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`expression` := s.`expression`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyEvent
+	transform s : Source!`Event`
+	to t : Target!`Event` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`convergence` := s.`convergence`;
+ 
+	t.`extended` := s.`extended`;
+ 
+	t.`refinesNames` := s.`refinesNames`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+ 
+	//t.`refines` ::= s.`refines`;
+	t.`refines` = s.`refines`;
+ 
+	t.`parameters` ::= s.`parameters`;
+ 
+	t.`guards` ::= s.`guards`;
+ 
+	t.`witnesses` ::= s.`witnesses`;
+ 
+	t.`actions` ::= s.`actions`;
+}
+rule CopyParameter
+	transform s : Source!`Parameter`
+	to t : Target!`Parameter` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyGuard
+	transform s : Source!`Guard`
+	to t : Target!`Guard` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`predicate` := s.`predicate`;
+ 
+	t.`theorem` := s.`theorem`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyWitness
+	transform s : Source!`Witness`
+	to t : Target!`Witness` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`predicate` := s.`predicate`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyAction
+	transform s : Source!`Action`
+	to t : Target!`Action` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`action` := s.`action`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyContext
+	transform s : Source!`Context`
+	to t : Target!`Context` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`extendsNames` := s.`extendsNames`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+ 
+	t.`extends` ::= s.`extends`;
+ 
+	t.`sets` ::= s.`sets`;
+ 
+	t.`constants` ::= s.`constants`;
+ 
+	t.`axioms` ::= s.`axioms`;
+}
+rule CopyConstant
+	transform s : Source!`Constant`
+	to t : Target!`Constant` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyCarrierSet
+	transform s : Source!`CarrierSet`
+	to t : Target!`CarrierSet` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyAxiom
+	transform s : Source!`Axiom`
+	to t : Target!`Axiom` {
+	
+ 
+	t.`reference` := s.`reference`;
+ 
+	t.`generated` := s.`generated`;
+ 
+	t.`localGenerated` := s.`localGenerated`;
+ 
+	t.`comment` := s.`comment`;
+ 
+	t.`name` := s.`name`;
+ 
+	t.`predicate` := s.`predicate`;
+ 
+	t.`theorem` := s.`theorem`;
+ 
+	t.`annotations` ::= s.`annotations`;
+ 
+	t.`extensions` ::= s.`extensions`;
+ 
+	t.`attributes` ::= s.`attributes`;
+}
+rule CopyEAttribute
+	transform s : Source!`EAttribute`
+	to t : Target!`EAttribute` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`ordered` := s.`ordered`;
+ 
+	t.`unique` := s.`unique`;
+ 
+	t.`lowerBound` := s.`lowerBound`;
+ 
+	t.`upperBound` := s.`upperBound`;
+ 
+	t.`changeable` := s.`changeable`;
+ 
+	t.`volatile` := s.`volatile`;
+ 
+	t.`transient` := s.`transient`;
+ 
+	t.`defaultValueLiteral` := s.`defaultValueLiteral`;
+ 
+	t.`unsettable` := s.`unsettable`;
+ 
+	t.`derived` := s.`derived`;
+ 
+	t.`iD` := s.`iD`;
+ 
+	t.`eType` ::= s.`eType`;
+ 
+	t.`eGenericType` ::= s.`eGenericType`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+}
+rule CopyEAnnotation
+	transform s : Source!`EAnnotation`
+	to t : Target!`EAnnotation` {
+	
+ 
+	t.`source` := s.`source`;
+ 
+	t.`eModelElement` ::= s.`eModelElement`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+ 
+	t.`details` ::= s.`details`;
+ 
+	t.`contents` ::= s.`contents`;
+ 
+	t.`references` ::= s.`references`;
+}
+rule CopyEClass
+	transform s : Source!`EClass`
+	to t : Target!`EClass` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`instanceClassName` := s.`instanceClassName`;
+ 
+	t.`instanceTypeName` := s.`instanceTypeName`;
+ 
+	t.`abstract` := s.`abstract`;
+ 
+	t.`interface` := s.`interface`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+ 
+	t.`eTypeParameters` ::= s.`eTypeParameters`;
+ 
+	t.`eSuperTypes` ::= s.`eSuperTypes`;
+ 
+	t.`eOperations` ::= s.`eOperations`;
+ 
+	t.`eStructuralFeatures` ::= s.`eStructuralFeatures`;
+ 
+	t.`eGenericSuperTypes` ::= s.`eGenericSuperTypes`;
+}
+rule CopyEDataType
+	transform s : Source!`EDataType`
+	to t : Target!`EDataType` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`instanceClassName` := s.`instanceClassName`;
+ 
+	t.`instanceTypeName` := s.`instanceTypeName`;
+ 
+	t.`serializable` := s.`serializable`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+ 
+	t.`eTypeParameters` ::= s.`eTypeParameters`;
+}
+rule CopyEEnum
+	transform s : Source!`EEnum`
+	to t : Target!`EEnum` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`instanceClassName` := s.`instanceClassName`;
+ 
+	t.`instanceTypeName` := s.`instanceTypeName`;
+ 
+	t.`serializable` := s.`serializable`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+ 
+	t.`eTypeParameters` ::= s.`eTypeParameters`;
+ 
+	t.`eLiterals` ::= s.`eLiterals`;
+}
+rule CopyEEnumLiteral
+	transform s : Source!`EEnumLiteral`
+	to t : Target!`EEnumLiteral` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`value` := s.`value`;
+ 
+	t.`instance` := s.`instance`;
+ 
+	t.`literal` := s.`literal`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+}
+rule CopyEFactory
+	transform s : Source!`EFactory`
+	to t : Target!`EFactory` {
+	
+ 
+	t.`ePackage` ::= s.`ePackage`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+}
+rule CopyEObject
+	transform s : Source!`EObject`
+	to t : Target!`EObject` {
+	
+}
+rule CopyEOperation
+	transform s : Source!`EOperation`
+	to t : Target!`EOperation` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`ordered` := s.`ordered`;
+ 
+	t.`unique` := s.`unique`;
+ 
+	t.`lowerBound` := s.`lowerBound`;
+ 
+	t.`upperBound` := s.`upperBound`;
+ 
+	t.`eType` ::= s.`eType`;
+ 
+	t.`eGenericType` ::= s.`eGenericType`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+ 
+	t.`eTypeParameters` ::= s.`eTypeParameters`;
+ 
+	t.`eParameters` ::= s.`eParameters`;
+ 
+	t.`eExceptions` ::= s.`eExceptions`;
+ 
+	t.`eGenericExceptions` ::= s.`eGenericExceptions`;
+}
+rule CopyEPackage
+	transform s : Source!`EPackage`
+	to t : Target!`EPackage` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`nsURI` := s.`nsURI`;
+ 
+	t.`nsPrefix` := s.`nsPrefix`;
+ 
+	t.`eFactoryInstance` ::= s.`eFactoryInstance`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+ 
+	t.`eClassifiers` ::= s.`eClassifiers`;
+ 
+	t.`eSubpackages` ::= s.`eSubpackages`;
+}
+rule CopyEParameter
+	transform s : Source!`EParameter`
+	to t : Target!`EParameter` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`ordered` := s.`ordered`;
+ 
+	t.`unique` := s.`unique`;
+ 
+	t.`lowerBound` := s.`lowerBound`;
+ 
+	t.`upperBound` := s.`upperBound`;
+ 
+	t.`eType` ::= s.`eType`;
+ 
+	t.`eGenericType` ::= s.`eGenericType`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+}
+rule CopyEReference
+	transform s : Source!`EReference`
+	to t : Target!`EReference` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`ordered` := s.`ordered`;
+ 
+	t.`unique` := s.`unique`;
+ 
+	t.`lowerBound` := s.`lowerBound`;
+ 
+	t.`upperBound` := s.`upperBound`;
+ 
+	t.`changeable` := s.`changeable`;
+ 
+	t.`volatile` := s.`volatile`;
+ 
+	t.`transient` := s.`transient`;
+ 
+	t.`defaultValueLiteral` := s.`defaultValueLiteral`;
+ 
+	t.`unsettable` := s.`unsettable`;
+ 
+	t.`derived` := s.`derived`;
+ 
+	t.`containment` := s.`containment`;
+ 
+	t.`resolveProxies` := s.`resolveProxies`;
+ 
+	t.`eType` ::= s.`eType`;
+ 
+	t.`eGenericType` ::= s.`eGenericType`;
+ 
+	t.`eOpposite` ::= s.`eOpposite`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+ 
+	t.`eKeys` ::= s.`eKeys`;
+}
+rule CopyEStringToStringMapEntry
+	transform s : Source!`EStringToStringMapEntry`
+	to t : Target!`EStringToStringMapEntry` {
+	
+ 
+	t.`key` := s.`key`;
+ 
+	t.`value` := s.`value`;
+}
+rule CopyEGenericType
+	transform s : Source!`EGenericType`
+	to t : Target!`EGenericType` {
+	
+ 
+	t.`eUpperBound` ::= s.`eUpperBound`;
+ 
+	t.`eLowerBound` ::= s.`eLowerBound`;
+ 
+	t.`eTypeParameter` ::= s.`eTypeParameter`;
+ 
+	t.`eClassifier` ::= s.`eClassifier`;
+ 
+	t.`eTypeArguments` ::= s.`eTypeArguments`;
+}
+rule CopyETypeParameter
+	transform s : Source!`ETypeParameter`
+	to t : Target!`ETypeParameter` {
+	
+ 
+	t.`name` := s.`name`;
+ 
+	t.`eAnnotations` ::= s.`eAnnotations`;
+ 
+	t.`eBounds` ::= s.`eBounds`;
+}
+

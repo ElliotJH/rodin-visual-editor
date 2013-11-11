@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/org.eventb.emf.core/model/eventbcore.genmodel
+gmf_dashboard/domainModel=platform\:/resource/org.eventb.emf.core/model/eventbcore.ecore
+gmf_dashboard/generationModel=platform\:/resource/visual-editor/model/My.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/visual-editor/model/eventbcore.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/visual-editor/model/My.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/visual-editor/model/eventbcore.gmftool

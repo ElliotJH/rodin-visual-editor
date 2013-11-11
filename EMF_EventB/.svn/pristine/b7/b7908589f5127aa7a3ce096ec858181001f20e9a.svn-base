@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eventb.emf.formulas/src"
+    modelPluginID="org.eventb.emf.formulas" modelName="Formulas" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../org.eventb.emf.core/model/eventbcore.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>formulas.ecore</foreignModel>
+  <genPackages prefix="Formulas" basePackage="org.eventb.emf" disposableProviderFactory="true"
+      ecorePackage="formulas.ecore#/">
+    <genClasses ecoreClass="formulas.ecore#//BFormula"/>
+    <genClasses image="false" ecoreClass="formulas.ecore#//BExpressionResolved"/>
+    <genClasses image="false" ecoreClass="formulas.ecore#//BPredicateResolved"/>
+    <genClasses ecoreClass="formulas.ecore#//BAssignmentResolved">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//BAssignmentResolved/identifiers"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="formulas.ecore#//Constant"/>
+    <genClasses image="false" ecoreClass="formulas.ecore#//UnaryOperator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//UnaryOperator/child"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="formulas.ecore#//BinaryOperator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//BinaryOperator/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//BinaryOperator/right"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//MultiOperand">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//MultiOperand/children"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//BecomesEqualToAssignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//BecomesEqualToAssignment/expressions"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//BecomesMemberOfAssignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//BecomesMemberOfAssignment/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//BecomesSuchThatAssignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//BecomesSuchThatAssignment/predicate"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//IntegerLiteralExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulas.ecore#//IntegerLiteralExpression/number"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//IdentifierExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulas.ecore#//IdentifierExpression/name"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//BoundIdentifierExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//ForallPredicate">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//ForallPredicate/identifiers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//ForallPredicate/predicate"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//ExistPredicate">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//ExistPredicate/identifiers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//ExistPredicate/predicate"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//LambdaExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//LambdaExpression/ident_pattern"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//LambdaExpression/predicate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//LambdaExpression/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//QuantifiedUnionExpression1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedUnionExpression1/identifiers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedUnionExpression1/predicate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedUnionExpression1/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//QuantifiedUnionExpression2">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedUnionExpression2/predicate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedUnionExpression2/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//QuantifiedIntersectionExpression1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedIntersectionExpression1/identifiers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedIntersectionExpression1/predicate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedIntersectionExpression1/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//QuantifiedIntersectionExpression2">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedIntersectionExpression2/predicate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//QuantifiedIntersectionExpression2/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//SetComprehensionExpression1">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulas.ecore#//SetComprehensionExpression1/identifiers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//SetComprehensionExpression1/predicate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//SetComprehensionExpression1/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//SetComprehensionExpression2">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//SetComprehensionExpression2/predicate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulas.ecore#//SetComprehensionExpression2/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulas.ecore#//INT"/>
+    <genClasses ecoreClass="formulas.ecore#//NAT"/>
+    <genClasses ecoreClass="formulas.ecore#//NAT1"/>
+    <genClasses ecoreClass="formulas.ecore#//BOOL"/>
+    <genClasses ecoreClass="formulas.ecore#//TRUE"/>
+    <genClasses ecoreClass="formulas.ecore#//FALSE"/>
+    <genClasses ecoreClass="formulas.ecore#//EMPTYSET"/>
+    <genClasses ecoreClass="formulas.ecore#//TRUTH"/>
+    <genClasses ecoreClass="formulas.ecore#//FALSITY"/>
+    <genClasses ecoreClass="formulas.ecore#//SuccExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//PredExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//BoolExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//CardExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//PowExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//Pow1Expression"/>
+    <genClasses ecoreClass="formulas.ecore#//KUnionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//KIntersectionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//DomainExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//RangeExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//Prj1Expression"/>
+    <genClasses ecoreClass="formulas.ecore#//Prj1GenExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//Prj2Expression"/>
+    <genClasses ecoreClass="formulas.ecore#//Prj2GenExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//IdentityExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//IdentityGenExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//UnaryMinusExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//MinExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//MaxExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//InverseExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//NotPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//FinitePredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//ParallelProductExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//RangeRestrictionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//RangeSubtractionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//UptoExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//ExponentiationExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//SetSubtractionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//FunctionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//ImageExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//ImplicationPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//EquivalencePredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//EqualPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//NotEqualPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//BelongPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//NotBelongPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//SubsetStrictPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//NotSubsetStrictPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//SubsetPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//NotSubsetPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//LessPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//LessEqualPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//GreaterPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//GreaterEqualPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//DomainRestrictionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//DomainSubtractionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//DirectProductExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//DivisionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//SubtractExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//ModuloExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//CartesianProductExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//PartialFunctionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//TotalFunctionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//RelationExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//TotalSurjectionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//TotalInjectionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//PartialSurjectionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//PartialInjectionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//TotalBijectionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//TotalRelationExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//SurjectiveRelationExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//TotalSurjectiveRelationExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//MapletExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//SetExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//BackwardCompositionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//ForwardCompositionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//RelationalOverridingExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//AndPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//OrPredicate"/>
+    <genClasses ecoreClass="formulas.ecore#//AddExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//MulExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//IntersectionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//UnionExpression"/>
+    <genClasses ecoreClass="formulas.ecore#//PartitionPredicate"/>
+  </genPackages>
+</genmodel:GenModel>

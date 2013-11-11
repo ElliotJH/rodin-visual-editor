@@ -1,0 +1,92 @@
+
+
+---
+Checklist of settings in ecore
+
+1) The root metaclass(es) for your extension must extend AbstractExtension from the core meta-model. This allows them to be added as a child in the 'extensions'
+   containment of any EventBElement.
+2) The root metaclass(es) for your extension may have an EAnnotation to list the allowable parents as the meta-classes that it extends (i.e. allowable parents). The
+   'source' should be set to 'org.eventb.emf.core.extendedMetaClasses'. You may add as many meta-classes as you like to the 'references' field of the EAnnotation.
+   This EAnnotation affects the item provider code generated in the *.edit plug-in. If you do not add an EAnnotation, your root metaclass can be added as a child to
+   ANY Event-B element.
+<<<TBD: We could add a key-value pair to this annotation to define the Extension ID string. This could be used to generate the Extension ID in the impl class by modifying the templates>>>
+
+---
+CheckList of changes to genmodel
+
+Model top node
+1) Change containment proxies to true
+ (so far there is no reason for containments to be across resource but this is done for consistency with core and in case extenders require it.)
+2) Using dynamic templates as described below:
+	i) Dynamic Templates = true
+	ii) Template Directory = /org.eventb.emf.core/templates
+	
+Package Records
+1) Change child creation extenders to true
+2) Change extensible  provider factory to true
+(Also: our conventions are to set base package to ac.soton.eventb - this is then prefixed to all java source packages.)
+
+Checklist of post-gen code changes (considering changing the Jet templates for these)
+1) in generated edit plugin -> plugin.xml, in the extension point childCreationExtenders, change the package URI to the one containing the allowable parents 
+   (e.g. http://emf.eventb.org/models/core/context) The generator always sets it to core. N.b. if more than one package, add another 
+   extension point
+2) This item only applies if you want to save your extension model as a string attribute and not generate rodin elements for each element in your extension. 
+[The alternative is to define Rodin equivalents for each part of your metamodel and then write synchronisers for all of them. For example see the Records plugin]
+(Somewhere in a plugin.xml) Add an extension to define that the SerialisedExtensionSynchroniser should be used for your extension class
+   <extension
+         point="org.eventb.emf.persistence.synchroniser">
+      <emfPackage
+            name="<myExtension> Package"
+            nsURI="http://soton.ac.uk/models/eventb/<myExtension>">
+         <synchroniser
+               emf_class="<myExtensionElementClass>"
+               name="<myExtension> Synchroniser"
+               rodin_id="ac.soton.eventb.emf.core.extension.persistence.serialisedExtension"
+               synchroniser_class="ac.soton.eventb.emf.core.extension.persistence.SerialisedExtensionSynchroniser">
+         </synchroniser>
+      </emfPackage>
+   </extension>
+3) in the impl class for your extension element, set up the ExtensionID with the last segment a UUID generated for each segment [TBD: Add more detail here]   
+4) optional: make customisations as in the core packages for inter-resource referencing (i.e. reference names derived attributes)
+5) optional: make customisations for lazy proxy construction.
+
+----------------------------------------------------------------
+Thats it! the rest is just notes about the customised code generators
+----------------------------------------------------------------
+
+Customisations made to the Dynamic Templates (Under development)
+
+This allows the code generation to be customised so that the post-gen code changes above are not needed.
+The EMF templates have been copied from org.eclipse.emf.codegen.ecore into org.eventb.emf.core
+The templates have been customised as listed below.
+
+Checklist of customisations to the code generation templates
+1)ItemProviderAdapterFactory -This obviates the need for code change 1)
+added: (in case method of creation switch (4th clause) - n.b. this may need to be done in other clauses in this method)
+				EAnnotation annotation = <%=createClass.getQualifiedClassifierAccessor()%>.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
+				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
+
+
+TBD: the mechanism 1) above works for parents in OTHER packages but it doesn't stop new children being offered all over THIS package. This is because the collectNewChildren 
+methods are hard generated code for the itemproviders of the current package - they do not use the child extenders themselves. Currently, I have customised these methods as
+ shown below but this could also be done in the jet templates to make it conditional on the extendedMetaClasses annotation references.
+ 
+ 	/**
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		//newChildDescriptors.add(createChildParameter(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS, RecordsFactory.eINSTANCE.createRecordCollection()));
+
+		newChildDescriptors.add(createChildParameter(RecordsPackage.Literals.RECORD_COLLECTION__RECORD_DECLARATIONS, RecordsFactory.eINSTANCE.createRecord()));
+
+		newChildDescriptors.add(createChildParameter(RecordsPackage.Literals.RECORD_COLLECTION__RECORD_EXTENSIONS, RecordsFactory.eINSTANCE
+				.createRecordExtension()));
+	}
+ 
+TBD: Automatically select the correct sub package in the edit plugin childCreationExtender extension.
+

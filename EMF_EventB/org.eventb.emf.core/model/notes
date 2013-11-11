@@ -1,0 +1,149 @@
+[nn] = page reference to EMF book, Steinberg et al. Second Edition.
+
+
+WARNINGS:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+AFTER REGENERATING MODEL CODE YOU ALWAYS NEED TO EDIT getURI in EventBObjectImpl to remove the <URI>
+ALSO, change "\\u22a4" to "\u22a4" in CorePackage
+IF YOU ADDED ANY FEATURES TO EventBElement YOU ALSO NEED TO UPDATE eGet IN EventBElementImpl
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+This version relies on the standard EMF structural features for cross resource referencing.
+e.g. "refines" is of type BMachine.
+
+Methods are provided for getting and setting the referencing string without loading the referenced element.
+It is not even known whether the element exists. Stubs for these methods are generated from the model via EOperation
+meta-elements [112]. (It may be possible to define the method bodies in the model using EAnnotation [], but currently the method bodies have been added after generation).
+
+for multiplicity-one references (e.g. machine refines) 4 (generated and then hand coded) methods are provided:
+String getXXName(); returns the name of the referenced element either from the element or from the proxy.
+Void setXXName(String newName); sets the name of the referenced element (either changing its name if it has been resolved or changing
+the proxy reference if not).
+setXXXName() and unSetXXXName call the corresponding set and unset methods of the attribute they derive from.
+
+for multiplicity many references (machine sees, event refines and context extends) 1 (generated and hand coded) method is provided
+EList<String> getXXXName(); returns an EList of the names of the referenced elements (this is generated every time it is required from the main reference list).
+This is a notifying list - any changes made to it will be notified to the element that owns the original reference list. The owner will then update its reference list 
+accordingly. [Owners of multiplicity many references have been overridden to always require notification and their eNotify method has been overridden to intercept changes to the 
+XXX_NAME feature in order to update the main reference list accordingly]
+
+for multiplicity many references (machine sees, event refines and context extends) 3 (custom hand coded - protected) methods are also provided to assist the
+notification update mechanism above and to populate the getXXXName() method:
+String getXXName(int index); returns the name of the referenced element either from the element or from the proxy.
+Void setXXName(int index, String newName); REPLACES the referenced element with a proxy having the given name as fragment (either changing its name if it is a 
+   proxy or removing it and replacing it with a new proxy if resolved)
+Void addXXName(String newName); creates a new proxy referencing the name and adds it to the collection XX. (This method uses addUnique to avoid uniqueness checking
+as uniqueness checking would resolve the whole list)
+
+for owners of these references, the eResolveProxy method has been overridden to provide 'lazy' proxy generation for these references. A dummy URI (provided in 
+CorePackage) until the proxy is resolved. The lazy proxy resolution detects that the proxy belongs to one of the references and then tries to construct it
+based on the owners URI (or, for event refines, on the refined machines URI).
+
+A method has been added to EventBObject to return its URI. If the element is a proxy, the proxyURI is returned. 
+Otherwise the URI of the component's resource is returned.
+
+
+
+
+Note that features such as refines, that may have no value at all, have the EMF attribute 'unsettable' set to true.
+This enables the eIsSet and eUnSet methods to be used to implement an 'unset' state.
+[108]
+
+Project containment of components has been changed to a cross resource containment. This involved making the containment
+proxy-resolving (actually, it meant making all the others non-proxy-resolving, since the unused default was 'true') 
+and enabling cross resource containment in the generator model.
+[411]
+
+Extensions are also made proxy-resolving so that the possibility of extensions being separate files is allowed. (of course,
+they may also be within the same resource).
+
+Dual access of references either by element name or by reference relies on the element name being used as the resource name.
+I.e. if the name of the element is changed, it will change the resource name and break any references to it. 
+(If the element name is changed in an editor that works at a higher level than the resource, the editor should
+ update the references automatically)
+
+Elements have an attribute called 'reference' which is set to be an intrinsic ID (property ID = true). This attribute is constructed from the 
+type of the element and its user editable name. E.g. org.eventb.machine.m1
+The name attribute is derived from the last part of reference and is therefore transient, volatile but can be changed. When name is set to
+a new value, it reconstructs a new 'reference'. 
+Reference was set to changeable = false, however, this prevents it being copied in e.g. EMF copy utility
+and loaded since no reflective setting method is provided. Instead we have now made it changeable but suppressed providers from being generated by
+setting it to read-only in the edit section of the genmodel.
+
+The fact that reference is an intrinsic ID  means that references between elements will use 'reference' in the proxy fragments instead of an index into the collection.
+This makes it possible for us to retrieve and set the name of a referenced element without resolving a proxy to it.
+(It is also more robust reference since with the default indexing any changes to ordering in the target will break any
+ references. The downside is that it is slower to resolve the references.)
+ [456]
+ 
+ 
+ 
+ the getName method in named element has been altered so that they can be used to obtain the name from the URI's
+ fragment in proxies (where the real name attribute is null). 
+
+file extensions etc.	THIS IS NOT WORKING YET (currently extensions "machine" and "context" are embedded in the code).
+(in genmodel) the file extensions of the machine and context packages have been set to bum and buc. Actually this only affects the default 
+EMF editor and serialisation but it helps in testing until we have our new persistence. 
+
+Also the wizard for the Events package has been
+turned off.
+
+genmodel:
+compliance level is now 6.0
+edit:  table providers = true
+dynamic templates = true
+template directory = /org.eventb.emf.core/templates
+
+
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++
+
+The isGenerated property in EventBElement means that the element has been automatically generated by a tool and consequently it should not be modified
+by the user. The following code was added to the item provider in order to suppress child generation commands. However, the code was later removed again 
+because it was decided that the editor should be responsible for this (for example we might want an advanced override to be available in the editor).
+
+This was added to EventBElementItemProvider:
+
+	/**
+	 * The {@link #createCommand} is overridden to prevent commands that change a generated element
+	 * cfs 4/4/2011
+	 * @custom
+	 */
+	
+	@Override
+	public Command createCommand(Object object, EditingDomain domain,
+			Class<? extends Command> commandClass,
+			CommandParameter commandParameter) {
+		
+		//disallow removing generated elements from a parent
+		if (commandClass == RemoveCommand.class){
+			for (Object objectToBeRemoved : commandParameter.getCollection()){
+				if (objectToBeRemoved instanceof EventBElement && ((EventBElement)objectToBeRemoved).isGenerated()){
+					return UnexecutableCommand.INSTANCE;
+				}				 
+			}
+		}
+		//disallow adding children to generated elements or deleting generated elements or moving or replacing their children
+		// or setting their features or creating a child for a generated element or dragging a collection onto a generated element
+		EObject owner = commandParameter.getEOwner();
+		if (	commandClass == AddCommand.class ||
+				commandClass == DeleteCommand.class ||
+				commandClass == MoveCommand.class ||
+				commandClass == ReplaceCommand.class ||
+				commandClass == SetCommand.class ||
+				commandClass == CreateChildCommand.class ||
+				commandClass == DragAndDropCommand.class
+				){
+			if (owner instanceof EventBElement && ((EventBElement)owner).isGenerated()){
+				return UnexecutableCommand.INSTANCE;
+			}
+		}
+		
+		return super.createCommand(object, domain, commandClass, commandParameter);
+	}
+

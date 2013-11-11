@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012/13 - University of Southampton.&#xD;All rights reserved. This program and the accompanying materials  are made&#xD;available under the terms of the Eclipse Public License v1.0 which accompanies this &#xD;distribution, and is available at http://www.eclipse.org/legal/epl-v10.html&#xA;"
+    modelDirectory="/ac.soton.eventb.emf.core.extension/src" editDirectory="/ac.soton.eventb.emf.core.extension/src"
+    modelPluginID="ac.soton.eventb.emf.core.extension" templateDirectory="/org.eventb.emf.core/templates"
+    dynamicTemplates="true" modelName="Eventbcoreextension" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" colorProviders="true" runtimeVersion="2.7" language="" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eventb.emf.core/model/eventbcore.genmodel#//core">
+  <foreignModel>eventbcoreextension.ecore</foreignModel>
+  <genPackages prefix="Coreextension" basePackage="ac.soton.eventb.emf.core.extension"
+      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
+      ecorePackage="eventbcoreextension.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="eventbcoreextension.ecore#//DataKind">
+      <genEnumLiterals ecoreEnumLiteral="eventbcoreextension.ecore#//DataKind/SET"/>
+      <genEnumLiterals ecoreEnumLiteral="eventbcoreextension.ecore#//DataKind/CONSTANT"/>
+      <genEnumLiterals ecoreEnumLiteral="eventbcoreextension.ecore#//DataKind/VARIABLE"/>
+    </genEnums>
+    <genClasses ecoreClass="eventbcoreextension.ecore#//TypedParameter"/>
+    <genClasses image="false" ecoreClass="eventbcoreextension.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcoreextension.ecore#//Type/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="eventbcoreextension.ecore#//EventBLabeled">
+      <genFeatures createChild="false" propertyCategory="" propertyDescription=""
+          propertyMultiLine="true" ecoreFeature="ecore:EAttribute eventbcoreextension.ecore#//EventBLabeled/label"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="eventbcoreextension.ecore#//EventBRelationKind">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcoreextension.ecore#//EventBRelationKind/surjective"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcoreextension.ecore#//EventBRelationKind/injective"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcoreextension.ecore#//EventBRelationKind/total"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcoreextension.ecore#//EventBRelationKind/functional"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="eventbcoreextension.ecore#//EventBDataElaboration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eventbcoreextension.ecore#//EventBDataElaboration/elaborates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcoreextension.ecore#//EventBDataElaboration/dataKind"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="eventbcoreextension.ecore#//EventBEventGroup">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eventbcoreextension.ecore#//EventBEventGroup/elaborates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcoreextension.ecore#//EventBEventGroup/extended"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcoreextension.ecore#//EventBEventGroup/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcoreextension.ecore#//EventBEventGroup/guards"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcoreextension.ecore#//EventBEventGroup/actions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcoreextension.ecore#//EventBEventGroup/witnesses"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="eventbcoreextension.ecore#//EventBCommentedLabeledEventGroupElement"/>
+    <genClasses image="false" ecoreClass="eventbcoreextension.ecore#//EventBCommentedLabeledElement"/>
+    <genClasses image="false" ecoreClass="eventbcoreextension.ecore#//EventBNamedCommentedDataElaborationElement"/>
+    <genClasses image="false" ecoreClass="eventbcoreextension.ecore#//EventBNamedCommentedRelationDataElaborationElement"/>
+  </genPackages>
+</genmodel:GenModel>

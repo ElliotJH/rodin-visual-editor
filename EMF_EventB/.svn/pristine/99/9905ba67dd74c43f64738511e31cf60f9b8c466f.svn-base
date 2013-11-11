@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="formulas"
+    nsURI="http://emf.eventb.org/models/core/formulas" nsPrefix="formulas">
+  <eClassifiers xsi:type="ecore:EClass" name="BFormula" abstract="true" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//Extension"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BExpressionResolved" abstract="true"
+      eSuperTypes="#//BFormula"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BPredicateResolved" abstract="true"
+      eSuperTypes="#//BFormula"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BAssignmentResolved" eSuperTypes="#//BFormula">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiers" lowerBound="1"
+        upperBound="-1" eType="#//IdentifierExpression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Constant" abstract="true" eSuperTypes="#//BFormula"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnaryOperator" abstract="true" eSuperTypes="#//BFormula">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="child" lowerBound="1" eType="#//BFormula"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BinaryOperator" abstract="true" eSuperTypes="#//BFormula">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" lowerBound="1" eType="#//BFormula"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" lowerBound="1" eType="#//BFormula"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiOperand" eSuperTypes="#//BFormula">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" lowerBound="2"
+        upperBound="-1" eType="#//BFormula" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BecomesEqualToAssignment" eSuperTypes="#//BAssignmentResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" lowerBound="1"
+        upperBound="-1" eType="#//BExpressionResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BecomesMemberOfAssignment" eSuperTypes="#//BAssignmentResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//BExpressionResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BecomesSuchThatAssignment" eSuperTypes="#//BAssignmentResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerLiteralExpression" eSuperTypes="#//BExpressionResolved">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifierExpression" eSuperTypes="#//BExpressionResolved">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BoundIdentifierExpression" eSuperTypes="#//IdentifierExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ForallPredicate" eSuperTypes="#//BPredicateResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiers" lowerBound="1"
+        upperBound="-1" eType="#//BoundIdentifierExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExistPredicate" eSuperTypes="#//BPredicateResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiers" lowerBound="1"
+        upperBound="-1" eType="#//BoundIdentifierExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LambdaExpression" eSuperTypes="#//BExpressionResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ident_pattern" lowerBound="1"
+        eType="#//IdentifierExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//BExpressionResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QuantifiedUnionExpression1" eSuperTypes="#//BExpressionResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiers" lowerBound="1"
+        upperBound="-1" eType="#//IdentifierExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//BExpressionResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QuantifiedUnionExpression2" eSuperTypes="#//BExpressionResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//BExpressionResolved"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QuantifiedIntersectionExpression1" eSuperTypes="#//BExpressionResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiers" lowerBound="1"
+        upperBound="-1" eType="#//IdentifierExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//BExpressionResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QuantifiedIntersectionExpression2" eSuperTypes="#//BExpressionResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//BExpressionResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetComprehensionExpression1" eSuperTypes="#//BExpressionResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiers" lowerBound="1"
+        upperBound="-1" eType="#//IdentifierExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//BExpressionResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetComprehensionExpression2" eSuperTypes="#//BExpressionResolved">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//BPredicateResolved" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//BExpressionResolved" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="INT" eSuperTypes="#//Constant #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NAT" eSuperTypes="#//Constant #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NAT1" eSuperTypes="#//Constant #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BOOL" eSuperTypes="#//Constant #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TRUE" eSuperTypes="#//Constant #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FALSE" eSuperTypes="#//Constant #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EMPTYSET" eSuperTypes="#//Constant #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TRUTH" eSuperTypes="#//Constant #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FALSITY" eSuperTypes="#//Constant #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SuccExpression" eSuperTypes="#//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PredExpression" eSuperTypes="#//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BoolExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CardExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PowExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Pow1Expression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="KUnionExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="KIntersectionExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RangeExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Prj1Expression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Prj1GenExpression" eSuperTypes="#//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Prj2Expression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Prj2GenExpression" eSuperTypes="#//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentityExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentityGenExpression" eSuperTypes="#//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnaryMinusExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MinExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MaxExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InverseExpression" eSuperTypes="#//UnaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NotPredicate" eSuperTypes="#//UnaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FinitePredicate" eSuperTypes="#//UnaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParallelProductExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RangeRestrictionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RangeSubtractionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UptoExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExponentiationExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetSubtractionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ImageExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplicationPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EquivalencePredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EqualPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NotEqualPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BelongPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NotBelongPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SubsetStrictPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NotSubsetStrictPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SubsetPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NotSubsetPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LessPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LessEqualPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GreaterPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GreaterEqualPredicate" eSuperTypes="#//BinaryOperator #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainRestrictionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainSubtractionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DirectProductExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DivisionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SubtractExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModuloExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CartesianProductExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartialFunctionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TotalFunctionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TotalSurjectionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TotalInjectionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartialSurjectionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartialInjectionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TotalBijectionExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TotalRelationExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SurjectiveRelationExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TotalSurjectiveRelationExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MapletExpression" eSuperTypes="#//BinaryOperator #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetExpression" eSuperTypes="#//MultiOperand #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BackwardCompositionExpression" eSuperTypes="#//MultiOperand #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ForwardCompositionExpression" eSuperTypes="#//MultiOperand #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationalOverridingExpression" eSuperTypes="#//MultiOperand #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AndPredicate" eSuperTypes="#//MultiOperand #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrPredicate" eSuperTypes="#//MultiOperand #//BPredicateResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AddExpression" eSuperTypes="#//MultiOperand #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MulExpression" eSuperTypes="#//MultiOperand #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntersectionExpression" eSuperTypes="#//MultiOperand #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnionExpression" eSuperTypes="#//MultiOperand #//BExpressionResolved"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartitionPredicate" eSuperTypes="#//MultiOperand #//BPredicateResolved"/>
+</ecore:EPackage>

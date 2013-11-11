@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eventb.emf.feature"
+      label="%featureName"
+      version="3.8.0.r15756"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.7.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.edit" version="2.7.0" match="compatible"/>
+      <import plugin="org.eventb.ui" version="2.3.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.edit" version="2.7.0" match="compatible"/>
+      <import plugin="org.eventb.emf.core" version="2.2.3" match="compatible"/>
+      <import plugin="org.eventb.core" version="2.3.0" match="compatible"/>
+      <import plugin="org.rodinp.core" version="1.5.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.7.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.transaction" version="1.4.0" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.7.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.compare" version="1.2.1" match="compatible"/>
+      <import plugin="org.eclipse.emf.compare.match" version="1.2.1" match="compatible"/>
+      <import plugin="org.eclipse.emf.compare.diff" version="1.2.1" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="org.eventb.emf.core"
+         download-size="209"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eventb.emf.formulas"
+         download-size="348"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eventb.emf.persistence"
+         download-size="53"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eventb.emf.compare"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

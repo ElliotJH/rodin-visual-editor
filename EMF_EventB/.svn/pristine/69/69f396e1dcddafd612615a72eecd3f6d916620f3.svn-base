@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+ Copyright (c) 2010
+ University of Southampton and others.
+ All rights reserved. This program and the accompanying materials  are made
+ available under the terms of the Eclipse Public License v1.0 which accompanies this 
+ distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+
+ $Id$
+-->
+
+<plugin>
+
+    <extension
+         point="org.eclipse.compare.contentMergeViewers">
+      <contentTypeBinding
+            contentMergeViewerId="org.eclipse.emf.compare.ui.contentmergeviewer.ModelContentMergeViewer"
+            contentTypeId="org.eventb.core.machineFile">
+      </contentTypeBinding>
+      <contentTypeBinding
+            contentMergeViewerId="org.eclipse.emf.compare.ui.contentmergeviewer.ModelContentMergeViewer"
+            contentTypeId="org.eventb.core.contextFile">
+      </contentTypeBinding>
+      <!--contentTypeBinding
+            contentMergeViewerId="org.eclipse.emf.compare.ui.contentmergeviewer.ModelContentMergeViewer"
+            contentTypeId="org.eventb.emf.persistence.machineFileXMI">
+      </contentTypeBinding-->
+   </extension>
+   <extension
+         point="org.eclipse.compare.structureMergeViewers">
+      <contentTypeBinding
+            structureMergeViewerId="org.eclipse.emf.compare.ui.structuremergeviewer.ModelStructureMergeViewer"
+            contentTypeId="org.eventb.core.machineFile">
+      </contentTypeBinding>
+      <contentTypeBinding
+            structureMergeViewerId="org.eclipse.emf.compare.ui.structuremergeviewer.ModelStructureMergeViewer"
+            contentTypeId="org.eventb.core.contextFile">
+      </contentTypeBinding>
+      <!--contentTypeBinding
+            structureMergeViewerId="org.eclipse.emf.compare.ui.structuremergeviewer.ModelStructureMergeViewer"
+            contentTypeId="org.eventb.emf.persistence.machineFileXMI">
+      </contentTypeBinding-->
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <file-association
+            content-type="org.eclipse.emf.compare.ui.contenttype.ModelContentType"
+            file-extensions="xmb">
+      </file-association>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.match.engine">
+      <matchengine
+            engineClass="org.eventb.emf.compare.match.EventBMatchEngine"
+            fileExtension="xmb"
+            icon="icons/b_per.gif"
+            label="EventB Match Engine">
+      </matchengine>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.diff.mergerprovider">
+      <mergerprovider
+            fileExtension="xmb"
+            mergerProviderClass="org.eventb.emf.compare.merge.MergerProvider"
+            priority="highest">
+      </mergerprovider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.diff.engine">
+      <diffengine
+            engineClass="org.eventb.emf.compare.diff.EventBDiffEngine"
+            fileExtension="xmb"
+            icon="icons/b_per.gif"
+            label="Event-B Difference Engine"
+            priority="highest">
+      </diffengine>
+   </extension>
+
+</plugin>

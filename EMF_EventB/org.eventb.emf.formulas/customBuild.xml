@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<project name="org.eventb.emf.formulas" default="generateEcore" basedir=".">
+	<property name="dir.src" value="src" />
+	<property name="dir.src_generated" value="src_generated" />
+
+	<target name="clean.emf">
+		<delete>
+			<fileset dir="${dir.src_generated}">
+				<include name="**/*" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="generateEcore" depends="clean.emf" description="Regenerates the Ecore model">
+		<emf.Ecore2Java model="model/formulas.ecore" genModel="model/formulas.genmodel" modelProject="${basedir}" modelProjectFragmentPath="${dir.src_generated}" modelPluginID="org.eventb.emf.formulas" copyright="Heinrich-Heine-Universitaet Duesseldorf - Lehrstuhl fuer Softwaretechnik und Programmiersprachen" jdkLevel="5.0">
+		</emf.Ecore2Java>
+	</target>
+</project>

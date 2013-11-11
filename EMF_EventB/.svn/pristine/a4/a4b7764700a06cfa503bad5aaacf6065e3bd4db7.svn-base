@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eventb.emf.persistence" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eventb.emf.persistence" id="org.eventb.emf.persistence.synchroniser" name="Persistency synchronisers"/>
+      </appInfo>
+      <documentation>
+         Defines a collection of synchroniser mappings to be used for serialising (persisting) and loading an EMF based representation of a Rodin model.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+         <documentation>
+            Defines a collection of synchroniser mappings to be used for serialising (persisting) and loading an EMF based representation of a Rodin model.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="emfPackage"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  optional user friendly name for this part of the extension
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="emfPackage">
+      <annotation>
+         <documentation>
+            Defines an EMF package and a set of sychronisations for the emf classes that package contains.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="synchroniser"/>
+         </sequence>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  optional user friendly name for this part of the extension
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="nsURI" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Namespace URI of the emf package.
+The package will be retrieved from the package registry using
+EPackage.Registry.INSTANCE.getEPackage(nsURI)
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="synchroniser">
+      <annotation>
+         <documentation>
+            A synchroniser mapping - this maps a rodin element type with an emf meta-class and the synchroniser class that will be used for loading and saving elements of these kinds.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  optional user friendly name for this part of the extension
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="emf_class" type="string">
+            <annotation>
+               <documentation>
+                  The (unqualified) name of an EMF class for this synchroniser
+e.g. Invariant
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="synchroniser_class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The fully qualified name of a class that implements ISynchroniser and will do the synchronisation for the given rodin and emf elements.
+e.g. org.eventb.emf.persistence.synchroniser.InvariantSynchroniser
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.eventb.emf.persistence.ISynchroniser"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="rodin_id" type="string">
+            <annotation>
+               <documentation>
+                  The Rodin Element type for this synchroniser. 
+e.g. org.eventb.core.invariant
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;extension
+         point=&quot;org.eventb.emf.persistence.synchroniser&quot;&gt;
+            &lt;emfPackage
+                  name=&quot;ContextPackage&quot;
+                  nsURI=&quot;http://emf.eventb.org/models/core/context&quot;&gt;
+               &lt;synchroniser
+              synchroniser=&quot;org.eventb.emf.persistence.synchroniser.ContextSynchroniser&quot;
+              emf_class=&quot;Context&quot;
+              name=&quot;Context&quot;
+              rodin_id=&quot;org.eventb.core.contextFile&quot;&gt;
+        &lt;/synchroniser&gt;
+        &lt;synchroniser
+              synchroniser=&quot;org.eventb.emf.persistence.synchroniser.ConstantSynchroniser&quot;
+              emf_class=&quot;Constant&quot;
+              name=&quot;Constant&quot;
+              rodin_id=&quot;org.eventb.core.constant&quot;&gt;
+        &lt;/synchroniser&gt;
+              &lt;synchroniser
+              synchroniser=&quot;org.eventb.emf.persistence.synchroniser.CarrierSetSynchroniser&quot;
+              emf_class=&quot;CarrierSet&quot;
+              name=&quot;CarrierSet&quot;
+              rodin_id=&quot;org.eventb.core.carrierSet&quot;&gt;
+        &lt;/synchroniser&gt;
+              &lt;synchroniser
+              synchroniser=&quot;org.eventb.emf.persistence.synchroniser.AxiomSynchroniser&quot;
+              emf_class=&quot;Axiom&quot;
+              name=&quot;Axiom&quot;
+              rodin_id=&quot;org.eventb.core.axiom&quot;&gt;
+        &lt;/synchroniser&gt;
+            &lt;/emfPackage&gt;
+   &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiinfo"/>
+      </appInfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>
