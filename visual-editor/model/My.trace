@@ -5,11 +5,25 @@
     xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
   <nodeTraces
       visualID="2001"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core/context' and _eClass_.name = 'Context') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core' and _eClass_.name = 'Project') and _containmentMF_.name = 'components')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core/context' and _eClass_.name = 'Context') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core' and _eClass_.name = 'Project') and _containmentMF_.name = 'components')">
+    <nodeLabelTraces
+        visualID="5001"
+        queryText="true"/>
+  </nodeTraces>
   <nodeTraces
       visualID="2002"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core/machine' and _eClass_.name = 'Machine') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core' and _eClass_.name = 'Project') and _containmentMF_.name = 'components')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core/machine' and _eClass_.name = 'Machine') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core' and _eClass_.name = 'Project') and _containmentMF_.name = 'components')">
+    <nodeLabelTraces
+        visualID="5002"
+        queryText="true"/>
+  </nodeTraces>
   <linkTraces
-      visualID="4001"
-      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core/machine' and _eClass_.name = 'Machine')"/>
+      visualID="4005"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core/machine' and _eClass_.name = 'Machine') and _feature_.name = 'refines')"/>
+  <linkTraces
+      visualID="4006"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core/machine' and _eClass_.name = 'Machine') and _feature_.name = 'sees')"/>
+  <linkTraces
+      visualID="4007"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://emf.eventb.org/models/core/context' and _eClass_.name = 'Context') and _feature_.name = 'extends')"/>
 </trace:TraceModel>

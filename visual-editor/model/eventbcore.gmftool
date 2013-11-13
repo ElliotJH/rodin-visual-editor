@@ -20,8 +20,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="MachineSees"
-          description="Create new MachineSees">
+          title="Sees"
+          description="Create new Sees">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -31,6 +31,24 @@
           xsi:type="gmftool:CreationTool"
           title="Context"
           description="Create new Context">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Refines"
+          description="Create Refines Relationship">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Extends"
+          description="Create Extends Relationship">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

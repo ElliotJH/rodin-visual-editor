@@ -10,6 +10,12 @@
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
         name="MachineSeesTargetDecoration"/>
+    <figures
+        xsi:type="gmfgraph:PolylineDecoration"
+        name="ContextExtendsContextDecoration"/>
+    <figures
+        xsi:type="gmfgraph:PolylineDecoration"
+        name="MachineRefinesMachineDecoration"/>
     <descriptors
         name="MachineFigure">
       <actualFigure
@@ -33,6 +39,13 @@
           targetDecoration="//@figures.0/@figures.0"/>
     </descriptors>
     <descriptors
+        name="ContextExtendsFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="ContextExtendsFigure"
+          targetDecoration="//@figures.0/@figures.1"/>
+    </descriptors>
+    <descriptors
         name="ContextFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
@@ -45,15 +58,30 @@
             text="&lt;...>"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="MachineRefinesFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="MachineSeesFigure"
+          targetDecoration="//@figures.0/@figures.2"/>
     </descriptors>
   </figures>
   <nodes
       name="Machine"
-      figure="MachineFigure"/>
+      figure="MachineFigure"
+      resizeConstraint="NONE"/>
   <nodes
       name="Context"
-      figure="ContextFigure"/>
+      figure="ContextFigure"
+      resizeConstraint="NONE"/>
+  <connections
+      name="ContextExtends"
+      figure="ContextExtendsFigure"/>
+  <connections
+      name="MachineRefines"
+      figure="MachineRefinesFigure"/>
   <connections
       name="MachineSees"
       figure="MachineSeesFigure"/>
@@ -64,5 +92,5 @@
   <labels
       name="ContextName"
       figure="ContextFigure"
-      accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.3/@accessors.0"/>
 </gmfgraph:Canvas>
