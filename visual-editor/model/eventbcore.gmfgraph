@@ -36,7 +36,15 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="MachineSeesFigure"
-          targetDecoration="//@figures.0/@figures.0"/>
+          targetDecoration="//@figures.0/@figures.0">
+        <children
+            xsi:type="gmfgraph:Label"
+            name="Sees"
+            text="Sees"/>
+      </actualFigure>
+      <accessors
+          accessor="getFigureSees"
+          figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="ContextExtendsFigure">
@@ -85,6 +93,10 @@
   <connections
       name="MachineSees"
       figure="MachineSeesFigure"/>
+  <labels
+      name="Sees"
+      figure="MachineSeesFigure"
+      accessor="//@figures.0/@descriptors.1/@accessors.0"/>
   <labels
       name="MachineName"
       figure="MachineFigure"

@@ -25,7 +25,6 @@
         visualID="2001"
         editPartClassName="ContextEditPart"
         itemSemanticEditPolicyClassName="ContextItemSemanticEditPolicy"
-        notationViewFactoryClassName="ContextViewFactory"
         canonicalEditPolicyClassName="ContextCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="ContextGraphicalNodeEditPolicy"
         createCommandClassName="ContextCreateCommand">
@@ -54,7 +53,6 @@
           visualID="5001"
           editPartClassName="WrappingLabelEditPart"
           itemSemanticEditPolicyClassName="WrappingLabelItemSemanticEditPolicy"
-          notationViewFactoryClassName="ContextLabelViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -70,7 +68,6 @@
         visualID="2002"
         editPartClassName="MachineEditPart"
         itemSemanticEditPolicyClassName="MachineItemSemanticEditPolicy"
-        notationViewFactoryClassName="MachineViewFactory"
         canonicalEditPolicyClassName="MachineCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="MachineGraphicalNodeEditPolicy"
         createCommandClassName="MachineCreateCommand">
@@ -99,7 +96,6 @@
           visualID="5002"
           editPartClassName="WrappingLabel2EditPart"
           itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="MachineLabelViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -115,7 +111,6 @@
         visualID="4006"
         editPartClassName="MachineSeesEditPart"
         itemSemanticEditPolicyClassName="MachineSeesItemSemanticEditPolicy"
-        notationViewFactoryClassName="MachineSeesViewFactory"
         createCommandClassName="MachineSeesCreateCommand"
         reorientCommandClassName="MachineSeesReorientCommand">
       <diagramRunTimeClass
@@ -125,18 +120,37 @@
       <viewmap
           xsi:type="gmfgen:InnerClassViewmap"
           className="MachineSeesFigure"
-          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class MachineSeesFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public MachineSeesFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class MachineSeesFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureSees; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public MachineSeesFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;createContents();&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureSees = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureSees.setText(&quot;Sees&quot;);&#xA;&#xA;this.add(fFigureSees);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureSees() {&#xA;&#x9;&#x9;return fFigureSees;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet
           xsi:type="gmfgen:FeatureLinkModelFacet">
         <metaFeature
             href="../../org.eventb.emf.core/model/eventbcore.genmodel#//core/machine/Machine/sees"/>
       </modelFacet>
+      <labels
+          visualID="6001"
+          editPartClassName="WrappingLabel3EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy"
+          readOnly="true"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureSees"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:LabelOffsetAttributes"
+              y="40"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:DesignLabelModelFacet"
+            parser="//@labelParsers/@implementations.1"/>
+      </labels>
     </links>
     <links
         visualID="4005"
         editPartClassName="MachineRefinesEditPart"
         itemSemanticEditPolicyClassName="MachineRefinesItemSemanticEditPolicy"
-        notationViewFactoryClassName="MachineRefinesViewFactory"
         createCommandClassName="MachineRefinesCreateCommand"
         reorientCommandClassName="MachineRefinesReorientCommand">
       <diagramRunTimeClass
@@ -359,6 +373,9 @@
     <implementations
         xsi:type="gmfgen:ExternalParser"
         uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet"/>
+    <implementations
+        xsi:type="gmfgen:ExternalParser"
+        uses="//@diagram/@links.0/@labels.0/@modelFacet"/>
   </labelParsers>
   <contextMenus
       context="//@diagram">

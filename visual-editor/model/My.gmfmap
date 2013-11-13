@@ -41,6 +41,12 @@
     </ownedChild>
   </nodes>
   <links>
+    <labelMappings
+        xsi:type="gmfmap:DesignLabelMapping"
+        readOnly="true">
+      <diagramLabel
+          href="eventbcore.gmfgraph#Sees"/>
+    </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="eventbcore.gmftool#//@palette/@tools.0/@tools.1"/>
