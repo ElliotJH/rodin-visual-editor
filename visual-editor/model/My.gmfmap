@@ -57,6 +57,12 @@
         href="../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Machine/sees"/>
   </links>
   <links>
+    <labelMappings
+        xsi:type="gmfmap:DesignLabelMapping"
+        readOnly="true">
+      <diagramLabel
+          href="eventbcore.gmfgraph#Refine"/>
+    </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="eventbcore.gmftool#//@palette/@tools.0/@tools.3"/>
@@ -67,6 +73,12 @@
         href="../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Machine/refines"/>
   </links>
   <links>
+    <labelMappings
+        xsi:type="gmfmap:DesignLabelMapping"
+        readOnly="true">
+      <diagramLabel
+          href="eventbcore.gmfgraph#Extends"/>
+    </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="eventbcore.gmftool#//@palette/@tools.0/@tools.4"/>

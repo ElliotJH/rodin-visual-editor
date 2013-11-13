@@ -51,7 +51,15 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="ContextExtendsFigure"
-          targetDecoration="//@figures.0/@figures.1"/>
+          targetDecoration="//@figures.0/@figures.1">
+        <children
+            xsi:type="gmfgraph:Label"
+            name="Extends"
+            text="Extends"/>
+      </actualFigure>
+      <accessors
+          accessor="getFigureExtends"
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="ContextFigure">
@@ -72,8 +80,16 @@
         name="MachineRefinesFigure">
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
-          name="MachineSeesFigure"
-          targetDecoration="//@figures.0/@figures.2"/>
+          name="MachineRefineFigure"
+          targetDecoration="//@figures.0/@figures.2">
+        <children
+            xsi:type="gmfgraph:Label"
+            name="Refine"
+            text="Refine"/>
+      </actualFigure>
+      <accessors
+          accessor="getFigureRefine"
+          figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
     </descriptors>
   </figures>
   <nodes
@@ -105,4 +121,12 @@
       name="ContextName"
       figure="ContextFigure"
       accessor="//@figures.0/@descriptors.3/@accessors.0"/>
+  <labels
+      name="Extends"
+      figure="ContextExtendsFigure"
+      accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels
+      name="Refine"
+      figure="MachineRefinesFigure"
+      accessor="//@figures.0/@descriptors.4/@accessors.0"/>
 </gmfgraph:Canvas>
