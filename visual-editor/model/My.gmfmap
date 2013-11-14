@@ -18,7 +18,7 @@
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="eventbcore.gmftool#//@palette/@tools.0/@tools.2"/>
+          href="eventbcore.gmftool#//@palette/@tools.0/@tools.1"/>
       <diagramNode
           href="eventbcore.gmfgraph#Context"/>
     </ownedChild>
@@ -49,7 +49,7 @@
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="eventbcore.gmftool#//@palette/@tools.0/@tools.1"/>
+        href="eventbcore.gmftool#//@palette/@tools.1/@tools.0"/>
     <diagramLink
         href="eventbcore.gmfgraph#MachineSees"/>
     <linkMetaFeature
@@ -65,7 +65,7 @@
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="eventbcore.gmftool#//@palette/@tools.0/@tools.3"/>
+        href="eventbcore.gmftool#//@palette/@tools.1/@tools.1"/>
     <diagramLink
         href="eventbcore.gmfgraph#MachineRefines"/>
     <linkMetaFeature
@@ -81,7 +81,7 @@
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="eventbcore.gmftool#//@palette/@tools.0/@tools.4"/>
+        href="eventbcore.gmftool#//@palette/@tools.1/@tools.2"/>
     <diagramLink
         href="eventbcore.gmfgraph#ContextExtends"/>
     <linkMetaFeature
