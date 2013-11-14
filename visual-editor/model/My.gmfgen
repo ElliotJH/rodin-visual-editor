@@ -229,7 +229,10 @@
     </links>
     <palette>
       <groups
-          title="core">
+          title="Component"
+          description=""
+          stack="true"
+          collapse="true">
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Machine"
@@ -237,14 +240,19 @@
             genNodes="//@diagram/@topLevelNodes.1"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Sees"
-            description="Create new Sees"
-            genLinks="//@diagram/@links.0"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
             title="Context"
             description="Create new Context"
             genNodes="//@diagram/@topLevelNodes.0"/>
+      </groups>
+      <groups
+          title="Relationship"
+          stack="true"
+          collapse="true">
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Sees"
+            description="Create new Sees"
+            genLinks="//@diagram/@links.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Refines"

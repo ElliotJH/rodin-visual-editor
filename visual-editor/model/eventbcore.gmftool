@@ -8,7 +8,11 @@
       title="corePalette">
     <tools
         xsi:type="gmftool:ToolGroup"
-        title="core">
+        title="Component"
+        description=""
+        collapsible="true"
+        stack="true"
+        active="//@palette/@tools.0">
       <tools
           xsi:type="gmftool:CreationTool"
           title="Machine"
@@ -20,17 +24,24 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Sees"
-          description="Create new Sees">
+          title="Context"
+          description="Create new Context">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>
+    </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Relationship"
+        collapsible="true"
+        stack="true"
+        active="//@palette/@tools.1">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Context"
-          description="Create new Context">
+          title="Sees"
+          description="Create new Sees">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
