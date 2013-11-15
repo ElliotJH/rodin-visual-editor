@@ -23,6 +23,14 @@
           name="MachineFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
+        <backgroundColor
+            xsi:type="gmfgraph:RGBColor"
+            red="204"
+            green="255"
+            blue="255"/>
+        <preferredSize
+            dx="80"
+            dy="50"/>
         <children
             xsi:type="gmfgraph:Label"
             name="MachineNameFigure"
@@ -68,6 +76,14 @@
           name="ContextFigure">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
+        <backgroundColor
+            xsi:type="gmfgraph:RGBColor"
+            red="225"
+            green="188"
+            blue="228"/>
+        <preferredSize
+            dx="80"
+            dy="50"/>
         <children
             xsi:type="gmfgraph:Label"
             name="ContextNameFigure"
