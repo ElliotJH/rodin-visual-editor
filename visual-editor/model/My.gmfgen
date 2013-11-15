@@ -266,16 +266,19 @@
             xsi:type="gmfgen:ToolEntry"
             title="Sees"
             description="Create new Sees"
+            smallIconPath="/visual-editor/icons/sees.gif"
             genLinks="//@diagram/@links.0"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Refines"
             description="Create Refines Relationship"
+            smallIconPath="/visual-editor/icons/refine.gif"
             genLinks="//@diagram/@links.1"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Extends"
             description="Create Extends Relationship"
+            smallIconPath="/visual-editor/icons/extends.gif"
             genLinks="//@diagram/@links.2"/>
       </groups>
     </palette>
