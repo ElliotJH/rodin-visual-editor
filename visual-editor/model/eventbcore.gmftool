@@ -43,27 +43,27 @@
           title="Sees"
           description="Create new Sees">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/sees.gif"
+            bundle="visual-editor"/>
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
           title="Refines"
           description="Create Refines Relationship">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/refine.gif"
+            bundle="visual-editor"/>
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
           title="Extends"
           description="Create Extends Relationship">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/extends.gif"
+            bundle="visual-editor"/>
       </tools>
     </tools>
   </palette>
