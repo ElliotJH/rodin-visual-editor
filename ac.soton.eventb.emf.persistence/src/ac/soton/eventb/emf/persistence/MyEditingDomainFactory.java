@@ -67,12 +67,11 @@ class MyResourceSetListener extends ResourceSetListenerImpl {
 			while(t.hasNext()) {
 				EObject e = t.next();
 				if(e instanceof Machine) {
-					Logger.getAnonymousLogger().severe("Machine");
+					Machine m = (Machine)e;
+					
 				} else if (e instanceof Context) {
-					Logger.getAnonymousLogger().severe("Context");
-				} else {
-					Logger.getAnonymousLogger().severe("Odd");
 				}
+				//We'll hand off to a plugin to attempt to save this new thing
 			}
 		}
 	}
