@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Event-B Persistence
+Bundle-SymbolicName: ac.soton.eventb.emf.persistence;singleton:=true
+Bundle-Version: 1.0.0.1
+Bundle-Activator: ac.soton.eventb.emf.persistence.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.transaction;bundle-version="1.4.0",
+ org.eclipse.emf.workspace;bundle-version="1.5.1",
+ org.eclipse.emf.ecore,
+ org.eventb.emf.core,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: ac.soton.eventb.emf.persistence
