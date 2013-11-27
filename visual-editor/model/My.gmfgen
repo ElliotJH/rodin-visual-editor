@@ -5,11 +5,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel">
   <diagram
-      visualID="1000"
+      visualID="1001"
       editPartClassName="ProjectEditPart"
       itemSemanticEditPolicyClassName="ProjectItemSemanticEditPolicy"
       canonicalEditPolicyClassName="ProjectCanonicalEditPolicy"
       iconProviderPriority="Low"
+      editingDomainID="ac.soton.eventb.emf.persistence.domain"
       validationProviderPriority="Low">
     <diagramRunTimeClass
         href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Diagram"/>
