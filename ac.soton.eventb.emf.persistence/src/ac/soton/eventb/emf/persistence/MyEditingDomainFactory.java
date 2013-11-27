@@ -14,6 +14,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 //import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
 import org.eventb.emf.core.Project;
+import org.eventb.emf.core.context.Context;
+import org.eventb.emf.core.machine.Machine;
 
 public class MyEditingDomainFactory extends WorkspaceEditingDomainFactory {
 
@@ -62,7 +64,16 @@ class MyResourceSetListener extends ResourceSetListenerImpl {
 	}
 	private void traverse(TreeIterator<EObject> t) {
 		if(t.next() instanceof Project) {
-			Logger.getAnonymousLogger().severe("Yes");
+			while(t.hasNext()) {
+				EObject e = t.next();
+				if(e instanceof Machine) {
+					Logger.getAnonymousLogger().severe("Machine");
+				} else if (e instanceof Context) {
+					Logger.getAnonymousLogger().severe("Context");
+				} else {
+					Logger.getAnonymousLogger().severe("Odd");
+				}
+			}
 		}
 	}
 }
