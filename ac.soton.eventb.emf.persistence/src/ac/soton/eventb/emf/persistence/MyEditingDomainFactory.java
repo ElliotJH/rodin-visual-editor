@@ -61,8 +61,8 @@ class MyResourceSetListener extends ResourceSetListenerImpl {
 		super.resourceSetChanged(event);
 	}
 	private void traverse(TreeIterator<EObject> t) {
-		if(t.next().eClass() == Project) {
-			
+		if(t.next() instanceof Project) {
+			Logger.getAnonymousLogger().severe("Yes");
 		}
 	}
 }
