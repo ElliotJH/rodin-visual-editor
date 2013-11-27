@@ -1,5 +1,6 @@
 package ac.soton.eventb.emf.persistence;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.core.commands.operations.IOperationHistory;
@@ -16,6 +17,10 @@ import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
 import org.eventb.emf.core.Project;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Machine;
+import org.rodinp.core.IRodinProject;
+import org.rodinp.core.RodinCore;
+import org.rodinp.core.RodinDBException;
+
 
 public class MyEditingDomainFactory extends WorkspaceEditingDomainFactory {
 
@@ -58,12 +63,22 @@ class MyResourceSetListener extends ResourceSetListenerImpl {
 	@Override
 	public void resourceSetChanged(ResourceSetChangeEvent event) {
 		for(Resource r : event.getEditingDomain().getResourceSet().getResources()) {
-			this.traverse(r.getAllContents());
+			try {
+				this.traverse(r.getAllContents());
+			} catch (RodinDBException e) {
+				// TODO Auto-generated catch block
+				Logger.getAnonymousLogger().log(Level.SEVERE, "Rodin Database Error", e);
+			}
 		}
 		super.resourceSetChanged(event);
 	}
-	private void traverse(TreeIterator<EObject> t) {
+	private void traverse(TreeIterator<EObject> t) throws RodinDBException {
+		 
 		if(t.next() instanceof Project) {
+			IRodinProject[] rodinProjectList = RodinCore.getRodinDB().getRodinProjects();
+			for(IRodinProject irp : rodinProjectList) {
+				//If it's the correct name then save to it.
+			}
 			while(t.hasNext()) {
 				EObject e = t.next();
 				if(e instanceof Machine) {
