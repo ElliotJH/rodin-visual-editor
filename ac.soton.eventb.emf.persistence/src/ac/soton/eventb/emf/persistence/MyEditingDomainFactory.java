@@ -84,6 +84,7 @@ class MyResourceSetListener extends ResourceSetListenerImpl {
 				if(e instanceof Machine) {
 					Machine m = (Machine)e;
 					
+					
 				} else if (e instanceof Context) {
 				}
 				//We'll hand off to a plugin to attempt to save this new thing

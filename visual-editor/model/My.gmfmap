@@ -12,9 +12,24 @@
     <ownedChild>
       <domainMetaElement
           href="../../org.eventb.emf.core/model/eventbcore.ecore#//context/Context"/>
-      <labelMappings>
+      <domainInitializer
+          xsi:type="gmfmap:FeatureSeqInitializer">
+        <initializers
+            xsi:type="gmfmap:FeatureValueSpec">
+          <feature
+              xsi:type="ecore:EAttribute"
+              href="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamed/name"/>
+          <value
+              body="'Context'"/>
+        </initializers>
+      </domainInitializer>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping"
+          readOnly="true">
         <diagramLabel
             href="eventbcore.gmfgraph#ContextName"/>
+        <features
+            href="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamed/name"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -29,9 +44,24 @@
     <ownedChild>
       <domainMetaElement
           href="../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Machine"/>
-      <labelMappings>
+      <domainInitializer
+          xsi:type="gmfmap:FeatureSeqInitializer">
+        <initializers
+            xsi:type="gmfmap:FeatureValueSpec">
+          <feature
+              xsi:type="ecore:EAttribute"
+              href="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamed/name"/>
+          <value
+              body="'Machine'"/>
+        </initializers>
+      </domainInitializer>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping"
+          readOnly="true">
         <diagramLabel
             href="eventbcore.gmfgraph#MachineName"/>
+        <features
+            href="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamed/name"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
