@@ -34,7 +34,7 @@
         <children
             xsi:type="gmfgraph:Label"
             name="MachineNameFigure"
-            text="&lt;...>"/>
+            text="Machine"/>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
@@ -87,7 +87,7 @@
         <children
             xsi:type="gmfgraph:Label"
             name="ContextNameFigure"
-            text="&lt;...>"/>
+            text="Context"/>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
@@ -132,10 +132,12 @@
   <labels
       name="MachineName"
       figure="MachineFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.0/@accessors.0"/>
   <labels
       name="ContextName"
       figure="ContextFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.3/@accessors.0"/>
   <labels
       name="Extends"
